@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}
+    </div>
+{% endif %}
+{% endwith %}
+<form class="form-login" action="/login" method="POST">
+    <h1 class="form-login-heading">Login</h1>
+    <p>Go to <a class="underline" href="{{ url_for('auth.register') }}">registration </a>page.</p>
+    {{ form.hidden_tag() }}
+    {{ form.email(class="input input-bordered", placeholder="email") }}
+    {{ form.password(class="input input-bordered", placeholder="password") }}
+    <button class="btn btn-sm" style="background-color:rgb(12 19 32);">Login</button>
+  </form>
+  {% endblock %}
